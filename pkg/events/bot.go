@@ -11,7 +11,8 @@ const (
 )
 
 var knownBotEvents = []string{
-	"response",
+	"response", // payload: Message
+	"command",  // payload: Command
 }
 
 type bot int
@@ -24,6 +25,16 @@ type Message struct {
 	Channel string `json:"channel,omitempty"`
 	Text    string `json:"text,omitempty"`
 }
+
+type Command struct {
+	Cmd     string `json:"cmd,omitempty"`
+	Args    string `json:"args,omitempty"`
+	Author  string `json:"author,omitempty"`
+	Channel string `json:"channel,omitempty"`
+}
+
+// TODO: not sold on channel in Command. It should not be there. Nor should Author. I think these should be part of the source.
+// Then ditto on Message.Channel
 
 func (bot) Type(t string) string {
 	if contains(knownBotEvents, t) {
