@@ -37,7 +37,7 @@ type Command struct {
 // Then ditto on Message.Channel
 
 func (bot) Type(t string) string {
-	if contains(knownBotEvents, t) {
+	if !contains(knownBotEvents, t) {
 		log.Printf("[WARN] unknown bot event type: %q", t)
 	}
 	return strings.ToLower(fmt.Sprintf(bot_type_template, t))

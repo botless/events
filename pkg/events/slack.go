@@ -26,7 +26,7 @@ var Slack slack // export Slack
 var _ = Slack
 
 func (slack) Type(t string) string {
-	if contains(slackKnownEvents, t) {
+	if !contains(slackKnownEvents, t) {
 		log.Printf("[WARN] unknown slack event type: %q", t)
 	}
 	return strings.ToLower(fmt.Sprintf(slack_type_template, t))
