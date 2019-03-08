@@ -20,16 +20,19 @@ var slackKnownEvents = []string{
 	"latency",
 }
 
-type Slack int
+type slack int
 
-func (Slack) Type(t string) string {
+var Slack slack // export Slack
+var _ = Slack
+
+func (slack) Type(t string) string {
 	if contains(slackKnownEvents, t) {
 		log.Printf("[WARN] unknown slack event type: %q", t)
 	}
 	return strings.ToLower(fmt.Sprintf(slack_type_template, t))
 }
 
-func (Slack) SourceForDomain(domain string) types.URLRef {
+func (slack) SourceForDomain(domain string) types.URLRef {
 	source := types.ParseURLRef(fmt.Sprintf(slack_source_domain_template, domain))
 	if source == nil {
 		return types.URLRef{}
@@ -37,7 +40,7 @@ func (Slack) SourceForDomain(domain string) types.URLRef {
 	return *source
 }
 
-func (Slack) SourceForChannel(domain, channel string) types.URLRef {
+func (slack) SourceForChannel(domain, channel string) types.URLRef {
 	source := types.ParseURLRef(fmt.Sprintf(slack_source_channel_template, domain, channel))
 	if source == nil {
 		return types.URLRef{}

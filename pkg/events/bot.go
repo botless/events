@@ -14,7 +14,10 @@ var knownBotEvents = []string{
 	"response",
 }
 
-type Bot int
+type bot int
+
+var Bot bot // export Bot
+var _ = Bot
 
 // Message, start simple.
 type Message struct {
@@ -22,7 +25,7 @@ type Message struct {
 	Text    string `json:"text,omitempty"`
 }
 
-func (Bot) Type(t string) string {
+func (bot) Type(t string) string {
 	if contains(knownBotEvents, t) {
 		log.Printf("[WARN] unknown bot event type: %q", t)
 	}
