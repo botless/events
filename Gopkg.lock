@@ -2,12 +2,12 @@
 
 
 [[projects]]
-  digest = "1:387dd3718ac720c126abc0e3fb5e44bb1765fb415454c930464da3e41a82d9c7"
+  digest = "1:8175233975d1bbc704a57dd402a8f33eaf9159a2ea741ff8e7cf87f581356774"
   name = "github.com/cloudevents/sdk-go"
   packages = ["pkg/cloudevents/types"]
   pruneopts = "UT"
-  revision = "e00e75c8a1befe895cc00def1f88adb611195159"
-  version = "0.4.4"
+  revision = "2fa4bb1fbb4aac4d906b0173a2a408f701439b82"
+  version = "v0.10.0"
 
 [solve-meta]
   analyzer-name = "dep"
